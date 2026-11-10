@@ -1,0 +1,19 @@
+setting,seed,last_100_training_games,final_network_100_test_games,best_network_100_test_games
+"A. first try (soft target 0.01, lr 5e-4, buffer 50k)",0,202.83,122.41,110.06
+"A. first try (soft target 0.01, lr 5e-4, buffer 50k)",1,269.22,176.88,25.73
+"A. first try (soft target 0.01, lr 5e-4, buffer 50k)",2,119.96,139.31,137.58
+"B. hard target every 500 steps, lr 5e-4",0,127.47,82.42,109.11
+"B. hard target every 500 steps, lr 5e-4",1,208.93,447.57,169.52
+"B. hard target every 500 steps, lr 5e-4",2,169.12,171.21,311.75
+"C. hard target every 1000 steps, lr 3e-4, buffer 100k",0,150.01,468.17,118.16
+"C. hard target every 1000 steps, lr 3e-4, buffer 100k",1,152.94,117.91,124.08
+"C. hard target every 1000 steps, lr 3e-4, buffer 100k",2,128.67,102.48,114.04
+"D. soft target 0.005, lr 3e-4, buffer 100k, slower exploration",0,79.6,212.56,212.56
+"D. soft target 0.005, lr 3e-4, buffer 100k, slower exploration",1,45.21,104.62,118.18
+"D. soft target 0.005, lr 3e-4, buffer 100k, slower exploration",2,32.56,120.26,123.83
+"E. hard target every 2000 steps, lr 1e-3, batch 128, buffer 100k",0,90.95,103.41,102.1
+"E. hard target every 2000 steps, lr 1e-3, batch 128, buffer 100k",1,162.6,123.8,123.8
+"E. hard target every 2000 steps, lr 1e-3, batch 128, buffer 100k",2,150.32,118.96,113.39
+F. as C but 1000 games,0,141.1,129.6,118.16
+F. as C but 1000 games,1,268.9,141.5,172.33
+F. as C but 1000 games,2,139.36,114.3,114.04

@@ -1,0 +1,12 @@
+# Python 3.12 was used. Install everything with:  pip install -r requirements.txt
+# CartPole was trained on a laptop CPU; MsPacman on one GPU card of the course server (CUDA build of torch 2.7).
+numpy>=2.0
+matplotlib>=3.9
+scipy>=1.13
+torch>=2.7
+gymnasium==1.4.0        # CartPole-v1 and the Atari wrapper
+ale-py==0.12.1          # the MsPacman game (ALE/MsPacman-v5); includes the game files
+
+# Only needed to rebuild the PDF report:
+reportlab>=4.0
+pillow>=10.0

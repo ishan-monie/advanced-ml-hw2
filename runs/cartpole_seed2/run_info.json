@@ -1,0 +1,30 @@
+{
+ "cfg": {
+  "env": "CartPole-v1",
+  "gamma": 0.95,
+  "lr": 0.0005,
+  "batch": 64,
+  "buffer": 50000,
+  "learning_starts": 1000,
+  "train_freq": 1,
+  "target_every": 250,
+  "tau": 0.0,
+  "eps_start": 1.0,
+  "eps_end": 0.02,
+  "eps_decay_steps": 10000,
+  "episodes": 800,
+  "hidden": 128,
+  "double": true,
+  "clip_rewards": false,
+  "eval_eps": 0.0,
+  "grad_clip": 10.0,
+  "eval_every": 10,
+  "eval_episodes": 30
+ },
+ "seed": 2,
+ "episodes_played": 800,
+ "steps": 122171,
+ "seconds": 158.30957627296448,
+ "best_avg100": 263.14,
+ "best_validation": 500.0
+}

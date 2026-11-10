@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+# tuning runs and the first (unstable) tries are not needed to reproduce the results
+runs_sweep/
+runs_first_try_cartpole_only/
+# models: keep only the chosen ones of the final runs
+runs/*/model_ep*.pt
+runs/*/model_last.pt
+!runs/cartpole_seed0/model_ep*.pt
+# the report build script is kept locally only; the finished PDF is in the repository
+report/make_report.py
+report/pacman_section.py
+*.log
+!runs/cartpole_seed0/model_last.pt

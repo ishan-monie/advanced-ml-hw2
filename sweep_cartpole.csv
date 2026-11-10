@@ -1,0 +1,26 @@
+setting,seed,last_100_training_games,final_network_100_test_games,chosen_network_100_test_games
+B. hard target update every 500 steps (default),100,162.83,191.15,260.83
+B. hard target update every 500 steps (default),101,171.17,329.16,500.0
+B. hard target update every 500 steps (default),102,153.3,158.46,470.61
+B. hard target update every 500 steps (default),103,177.37,123.21,465.74
+B. hard target update every 500 steps (default),104,195.78,160.94,500.0
+H. as B plus 25% of every batch from a memory of game-ending steps,100,251.58,112.41,491.5
+H. as B plus 25% of every batch from a memory of game-ending steps,101,223.23,488.58,496.16
+H. as B plus 25% of every batch from a memory of game-ending steps,102,172.34,104.41,299.47
+H. as B plus 25% of every batch from a memory of game-ending steps,103,263.59,96.93,500.0
+H. as B plus 25% of every batch from a memory of game-ending steps,104,181.37,202.36,356.99
+I. as B plus learning rate falling from 1e-3 to 1e-5,100,171.88,157.61,500.0
+I. as B plus learning rate falling from 1e-3 to 1e-5,101,318.38,230.45,494.46
+I. as B plus learning rate falling from 1e-3 to 1e-5,102,223.43,197.33,500.0
+I. as B plus learning rate falling from 1e-3 to 1e-5,103,318.04,495.33,500.0
+I. as B plus learning rate falling from 1e-3 to 1e-5,104,182.43,163.21,346.74
+M. as B with the target update every 250 steps,100,170.91,127.48,459.05
+M. as B with the target update every 250 steps,101,152.05,135.88,480.7
+M. as B with the target update every 250 steps,102,156.68,148.07,499.11
+M. as B with the target update every 250 steps,103,133.68,160.58,500.0
+M. as B with the target update every 250 steps,104,159.18,151.67,489.52
+"N. soft target update (0.01), as in the first try",100,170.75,96.27,462.81
+"N. soft target update (0.01), as in the first try",101,250.1,118.18,500.0
+"N. soft target update (0.01), as in the first try",102,222.79,161.72,498.3
+"N. soft target update (0.01), as in the first try",103,205.17,114.49,499.5
+"N. soft target update (0.01), as in the first try",104,174.23,107.12,464.37
