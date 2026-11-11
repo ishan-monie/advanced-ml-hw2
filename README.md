@@ -3,7 +3,7 @@
 GitHub user: **ishan-monie**  |  Repository: **advanced-ml-hw2**
 
 A Deep Q-Network (neural network + replay buffer + target network, with Double DQN and Huber loss) that plays **CartPole-v1** (discount 0.95) and **MsPacman-v5** (discount 0.99, pictures as input).
-The submitted report is `report/report.pdf`: the graphs, the edge-case and test tables for each game, and the discussion.
+The report is in `report/`: the graphs, the edge-case and test tables for each game, and the discussion. `report_v1.pdf` is the first version and `report_v2.pdf` is the same report with simpler wording (same graphs, tables and numbers).
 
 ## What is in this repository
 | File or folder | What it holds |
@@ -16,7 +16,7 @@ The submitted report is `report/report.pdf`: the graphs, the edge-case and test 
 | `runs/` | Training logs (`log.npz`) and chosen networks (`model_best.pt`) of the final runs |
 | `results/` | Scores of the 500 test games |
 | `figures/` | The graphs used in the report |
-| `report/` | The PDF report |
+| `report/` | The PDF report (`report_v1.pdf`, `report_v2.pdf`) |
 
 ## Requirements
 Python 3.12. `pip install -r requirements.txt`. CartPole runs on a laptop CPU. MsPacman needs hours; it was trained on one GPU card (`--device cuda`). The finished runs are included, so the graphs and tests work without training.
