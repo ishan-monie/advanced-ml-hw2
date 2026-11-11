@@ -14,10 +14,12 @@ from dqn import (MLP, ReplayBuffer, Game, FrameStack, td_targets, learn, sync_ta
 torch.set_num_threads(1)
 HERE = os.path.dirname(os.path.abspath(__file__))
 results = []
+evidence_by_id = {}
 
 
 def check(name, ok, evidence=""):
     results.append(bool(ok))
+    evidence_by_id[name.split(".")[0]] = evidence
     print(f"[{'PASS' if ok else 'FAIL'}] {name}" + (f"  ->  {evidence}" if evidence else ""))
 
 
@@ -258,5 +260,7 @@ def load_net(game, path):
 
 exec(open(os.path.join(HERE, "test_results.py")).read()) if os.path.exists(os.path.join(HERE, "test_results.py")) else None
 
+import json
+json.dump(evidence_by_id, open(os.path.join(HERE, "test_evidence.json"), "w"), indent=1)   # the report reads its numbers from here
 print(f"\n{sum(results)} of {len(results)} checks passed")
 raise SystemExit(0 if all(results) else 1)

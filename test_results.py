@@ -131,3 +131,10 @@ if have("runs/pacman_seed0/log.npz", "runs/pacman_seed0/model_best.pt", "results
     check("P8. the largest Q value starts near 0, rises while the network learns, and stays far below the ceiling 1/(1-0.99) = 100",
           np.mean(mq[:25]) < 2 and np.mean(mq[-200:]) > 5 * np.mean(mq[:25]) and mq.max() < 100,
           f"first 25 games {np.mean(mq[:25]):.2f}; last 200 games {np.mean(mq[-200:]):.1f}; highest ever {mq.max():.1f}")
+
+    torch.manual_seed(0)
+    fresh = dqn.make_network("pacman", 9, CONFIGS["pacman"]["hidden"])
+    fresh.eval()
+    fresh_scores = evaluate(fresh, "pacman", episodes=20, seed=12345, eps=float(pm_eval["eps"]))
+    check("P9. can the results fail? A network with random weights (never trained) should score like random play, far below the trained network",
+          fresh_scores.mean() < 0.5 * ps.mean(), f"untrained network {fresh_scores.mean():.0f} (20 games), trained network {ps.mean():.0f}")

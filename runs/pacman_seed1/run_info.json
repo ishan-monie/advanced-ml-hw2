@@ -1,0 +1,27 @@
+{
+ "cfg": {
+  "env": "ALE/MsPacman-v5",
+  "gamma": 0.99,
+  "lr": 0.0001,
+  "batch": 32,
+  "buffer": 100000,
+  "learning_starts": 10000,
+  "train_freq": 4,
+  "target_every": 2000,
+  "tau": 0.0,
+  "eps_start": 1.0,
+  "eps_end": 0.05,
+  "eps_decay_steps": 400000,
+  "episodes": 6000,
+  "hidden": 512,
+  "double": true,
+  "clip_rewards": true,
+  "eval_eps": 0.05,
+  "grad_clip": 10.0
+ },
+ "seed": 1,
+ "episodes_played": 6000,
+ "steps": 4727658,
+ "seconds": 14195.613889694214,
+ "best_avg100": 2258.5
+}
