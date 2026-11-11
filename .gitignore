@@ -12,3 +12,8 @@ report/make_report.py
 report/pacman_section.py
 *.log
 !runs/cartpole_seed0/model_last.pt
+# kept on the laptop only, not needed to check the submission
+report/report_v1.pdf
+tests/test_evidence.json
+runs/cartpole_seed[1-4]/model_best.pt
+runs/pacman_seed1/model_best.pt
