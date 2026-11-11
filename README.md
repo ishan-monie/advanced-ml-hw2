@@ -11,9 +11,8 @@ advanced-ml-hw2/
 ├── README.md             this file
 ├── requirements.txt      Python packages to install
 │
-├── report/               THE REPORT (hand this in)
-│   ├── report_v2.pdf       final report: plainer wording
-│   └── report_v1.pdf       first version (same graphs, tables and numbers; its run commands use the old file locations)
+├── report/               THE REPORT
+│   └── report_v2.pdf       the report (graphs, edge cases, tests, discussion, run instructions)
 │
 ├── src/                  THE CODE
 │   ├── dqn.py              the whole Deep Q-Network: replay buffer, networks, target network, training loop, test games
