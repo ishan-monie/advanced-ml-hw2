@@ -140,7 +140,7 @@ check("C3. Pacman pictures: cleaned frame is 88 x 80 with values from -128 to 12
 pm = dqn.train("pacman", seed=0, episodes=2, learning_starts=10 ** 9, buffer=3000, return_buffer=True)
 pm_log, pm_buf = pm[1], pm[2]
 stored = pm_buf.r[:pm_buf.size]
-check("C4. Pacman rewards are squashed to between -1 and +1 for learning (a pellet is 10 points, a ghost 200+), but the scores that are "
+check("C4. Pacman rewards are clipped to between -1 and +1 for learning (a pellet is 10 points, a ghost 200+), but the scores that are "
       "reported are the real ones",
       stored.max() <= 1.0 and stored.min() >= -1.0 and stored.max() == 1.0 and all(x >= 10 and x % 10 == 0 for x in pm_log["reward"]),
       f"largest stored reward {stored.max():.0f}; real scores of the two games {pm_log['reward']}")

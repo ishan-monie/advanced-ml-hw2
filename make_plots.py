@@ -44,7 +44,7 @@ def standard_plots(game):
     if game == "cartpole":
         plt.axhline(1 / (1 - gamma), color="k", ls="--", lw=1, label=f"largest possible true value, 1/(1-{gamma}) = {1 / (1 - gamma):.0f}")
     plt.xlabel("training episode")
-    plt.ylabel("maximum Q value" + (" (rewards squashed to -1..+1)" if game == "pacman" else ""))
+    plt.ylabel("maximum Q value" + (" (rewards clipped to -1..+1)" if game == "pacman" else ""))
     plt.title(f"{NAMES[game]}: maximum Q value during training")
     plt.grid(alpha=.3); plt.legend(fontsize=8)
     save(f"{game}_max_q.png")

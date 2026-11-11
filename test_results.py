@@ -123,7 +123,7 @@ if have("runs/pacman_seed0/log.npz", "runs/pacman_seed0/model_best.pt", "results
 
     pq, rq = pm_eval["predicted"], pm_eval["realised"]
     corr = np.corrcoef(pq, rq)[0, 1]
-    check("P7. predicted against actual value in the test games (rewards squashed to -1..+1, discount 0.99): the predictions follow the actual returns "
+    check("P7. predicted against actual value in the test games (rewards clipped to -1..+1, discount 0.99): the predictions follow the actual returns "
           "(correlation above 0.5)", corr > 0.5,
           f"correlation {corr:.2f}; average prediction {pq.mean():.1f}, average actual {rq.mean():.1f}; highest prediction {pq.max():.1f}")
 
