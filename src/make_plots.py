@@ -1,5 +1,5 @@
 """Makes all the graphs of the report (saved in figures/).
-Run: python make_plots.py
+Run (from the project folder): python src/make_plots.py
 Needs: runs/<game>_seed*/log.npz (training logs), results/<game>_eval.npz (the 500 test games, from evaluate_models.py),
 and for the CartPole policy map the saved networks runs/cartpole_seed0/model_ep*.pt and model_best.pt."""
 import glob
@@ -14,7 +14,7 @@ import torch
 
 import dqn
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIG = os.path.join(HERE, "figures")
 os.makedirs(FIG, exist_ok=True)
 NAMES = {"cartpole": "CartPole-v1", "pacman": "MsPacman-v5"}

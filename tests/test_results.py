@@ -53,15 +53,15 @@ if have("runs/cartpole_seed0/log.npz", "runs/cartpole_seed0/model_best.pt", "res
           len(seed_means) == 5 and min(seed_means) > 300 and sum(m > 490 for m in seed_means) >= 4,
           "test means " + ", ".join(f"{m:.0f}" for m in seed_means))
 
-    if have("diagnose_cartpole.csv"):
-        rows = list(csv.DictReader(open(os.path.join(HERE, "diagnose_cartpole.csv"))))
+    if have("experiments/diagnose_cartpole.csv"):
+        rows = list(csv.DictReader(open(os.path.join(HERE, "experiments", "diagnose_cartpole.csv"))))
         left, fell = sum(int(r["cart_left_track"]) for r in rows), sum(int(r["pole_fell"]) for r in rows)
         check("E8. why do weak networks fail? Prediction: mostly by the cart drifting off the track, not by the pole falling "
               "(a discount of 0.95 only sees about 20 steps ahead)", left > 3 * fell,
               f"{len(rows)} tuning networks x 100 games: cart left the track {left}, pole fell {fell}")
 
-    if have("experiment_discount.csv"):
-        rows = list(csv.DictReader(open(os.path.join(HERE, "experiment_discount.csv"))))
+    if have("experiments/experiment_discount.csv"):
+        rows = list(csv.DictReader(open(os.path.join(HERE, "experiments", "experiment_discount.csv"))))
         low = [float(r["final_network_100_test_games"]) for r in rows if float(r["discount"]) == 0.95]
         high = [float(r["final_network_100_test_games"]) for r in rows if float(r["discount"]) == 0.99]
         left95 = sum(int(r["cart_left_track"]) for r in rows if float(r["discount"]) == 0.95)

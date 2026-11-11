@@ -1,7 +1,7 @@
 """Plays 500 test games with a trained network and saves the scores (and, for every step, the predicted best Q
 and the return that was actually earned afterwards).
-Run: python evaluate_models.py --game cartpole --model runs/cartpole_seed0/model_best.pt --out results/cartpole_eval.npz
-     python evaluate_models.py --game pacman   --model runs/pacman_seed0/model_best.pt   --out results/pacman_eval.npz --device cuda
+Run: python src/evaluate_models.py --game cartpole --model runs/cartpole_seed0/model_best.pt --out results/cartpole_eval.npz
+     python src/evaluate_models.py --game pacman   --model runs/pacman_seed0/model_best.pt   --out results/pacman_eval.npz --device cuda
 The test games use their own random seed (12345), different from the training seed."""
 import argparse
 import os

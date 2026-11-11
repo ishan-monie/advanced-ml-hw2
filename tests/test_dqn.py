@@ -1,4 +1,4 @@
-"""Checks for the DQN code: edge cases and "does it behave as predicted?".   Run: python test_dqn.py
+"""Checks for the DQN code: edge cases and "does it behave as predicted?".   Run: python tests/test_dqn.py
 Each check prints PASS or FAIL and the evidence. Checks in sections A to D need no trained model;
 section E uses the saved results of the real training runs (runs/ and results/)."""
 import copy
@@ -7,12 +7,14 @@ import numpy as np
 import torch
 from scipy import stats
 
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
 import dqn
 from dqn import (MLP, ReplayBuffer, Game, FrameStack, td_targets, learn, sync_target, epsilon_at, discounted_returns,
                  preprocess_observation, greedy_action, evaluate, moving_average, CONFIGS)
 
 torch.set_num_threads(1)
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 results = []
 evidence_by_id = {}
 
@@ -258,9 +260,9 @@ def load_net(game, path):
     return net
 
 
-exec(open(os.path.join(HERE, "test_results.py")).read()) if os.path.exists(os.path.join(HERE, "test_results.py")) else None
+exec(open(os.path.join(HERE, "tests", "test_results.py")).read()) if os.path.exists(os.path.join(HERE, "tests", "test_results.py")) else None
 
 import json
-json.dump(evidence_by_id, open(os.path.join(HERE, "test_evidence.json"), "w"), indent=1)   # the report reads its numbers from here
+json.dump(evidence_by_id, open(os.path.join(HERE, "tests", "test_evidence.json"), "w"), indent=1)   # the report reads its numbers from here
 print(f"\n{sum(results)} of {len(results)} checks passed")
 raise SystemExit(0 if all(results) else 1)

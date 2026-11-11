@@ -1,7 +1,7 @@
 """Change-the-problem experiment for CartPole: does a longer-sighted discount fix the drifting-off-the-track failure?
 Prediction (made before running): with discount 0.99 instead of 0.95 the network at the END of training plays much longer
 games, because a failure that is 100 steps away is no longer invisible (0.95 ** 100 = 0.006, 0.99 ** 100 = 0.37).
-Run: python experiment_discount.py       (about 5 minutes; results in experiment_discount.csv)
+Run: python experiments/experiment_discount.py       (about 5 minutes; results in experiment_discount.csv)
 Both settings use the same 5 seeds (100-104) and everything else is identical (hard target update every 250 steps)."""
 import csv
 import os
@@ -10,10 +10,13 @@ from multiprocessing import Pool
 import numpy as np
 import torch
 
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
 import dqn
 import diagnose_cartpole
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(HERE, "experiments")
 SEEDS = (100, 101, 102, 103, 104)
 
 
@@ -30,7 +33,7 @@ if __name__ == "__main__":
     jobs = [(g, s) for g in (0.95, 0.99) for s in SEEDS]
     with Pool(10) as pool:
         rows = pool.map(one, jobs)
-    with open(os.path.join(HERE, "experiment_discount.csv"), "w", newline="") as f:
+    with open(os.path.join(OUT, "experiment_discount.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["discount", "seed", "final_network_100_test_games", "cart_left_track", "pole_fell", "reached_500"])
         w.writerows(rows)

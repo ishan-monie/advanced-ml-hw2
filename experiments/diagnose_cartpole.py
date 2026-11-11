@@ -1,6 +1,6 @@
 """Why do some CartPole networks fail? Plays 100 greedy games with every saved network of the tuning runs and counts
 how each game ended: the cart left the track, the pole fell, or the 500-step limit was reached.
-Run: python diagnose_cartpole.py        (results in diagnose_cartpole.csv)"""
+Run: python experiments/diagnose_cartpole.py        (results in diagnose_cartpole.csv)"""
 import csv
 import glob
 import os
@@ -9,9 +9,12 @@ import gymnasium as gym
 import numpy as np
 import torch
 
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
 import dqn
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(HERE, "experiments")
 
 
 def causes(net, games=100):
@@ -47,7 +50,7 @@ if __name__ == "__main__":
         c, mean_len = causes(net)
         rows.append([os.path.basename(os.path.dirname(path)), round(mean_len, 1), c["cart left the track"], c["pole fell"], c["reached 500 steps"]])
         print(rows[-1])
-    with open(os.path.join(HERE, "diagnose_cartpole.csv"), "w", newline="") as f:
+    with open(os.path.join(OUT, "diagnose_cartpole.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["network", "mean_game_length", "cart_left_track", "pole_fell", "reached_500"])
         w.writerows(rows)

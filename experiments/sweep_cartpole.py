@@ -1,5 +1,5 @@
 """CartPole tuning: tries a few settings on several seeds each and reports how well the chosen network plays.
-Run: python sweep_cartpole.py        (about 10 minutes; results in sweep_cartpole.csv)
+Run: python experiments/sweep_cartpole.py        (about 10 minutes; results in sweep_cartpole.csv)
 The score of a setting is judged on 100 greedy test games with their own random seed (777), not on the training games.
 
 History (the earlier rounds are kept as sweep_cartpole_firstrun.csv and sweep_cartpole_secondrun.csv):
@@ -16,9 +16,12 @@ from multiprocessing import Pool
 import numpy as np
 import torch
 
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
 import dqn
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(HERE, "experiments")
 SETTINGS = {
     "B. hard target update every 500 steps (default)": dict(),
     "H. as B plus 25% of every batch from a memory of game-ending steps": dict(failure_fraction=0.25),
@@ -46,7 +49,7 @@ if __name__ == "__main__":
     jobs = [(n, s) for n in SETTINGS for s in SEEDS]
     with Pool(min(12, os.cpu_count() or 4)) as pool:
         rows = pool.map(one, jobs)
-    with open(os.path.join(HERE, "sweep_cartpole.csv"), "w", newline="") as f:
+    with open(os.path.join(OUT, "sweep_cartpole.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["setting", "seed", "last_100_training_games", "final_network_100_test_games", "chosen_network_100_test_games"])
         w.writerows(rows)
