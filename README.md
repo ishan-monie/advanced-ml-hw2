@@ -28,7 +28,7 @@ advanced-ml-hw2/
 │   └── pacman_*.png        max Q, training reward, 500-game histogram, seeds, predicted-vs-actual value (non-standard)
 │
 ├── runs/                 TRAINING OUTPUT of the final runs (cartpole_seed0-4, pacman_seed0-1)
-│   └── <run>/              log.npz (training log), run_info.json, and model_best.pt (kept network, only for the two main runs cartpole_seed0 and pacman_seed0)
+│   └── <run>/              log.npz (training log), run_info.json, and model_best.pt (kept network)
 │
 ├── results/              scores of the 500 test games, as .npz files
 │
