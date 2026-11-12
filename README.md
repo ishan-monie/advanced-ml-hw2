@@ -21,7 +21,7 @@ advanced-ml-hw2/
 │
 ├── tests/                THE EDGE-CASE AND BEHAVIOUR CHECKS
 │   ├── test_dqn.py         checks that need no trained network (and runs test_results.py at the end)
-│   ├── test_results.py     checks on the saved CartPole and MsPacman runs
+│   └── test_results.py     checks on the saved CartPole and MsPacman runs
 │
 ├── figures/              the graphs used in the report (PNG)
 │   ├── cartpole_*.png      max Q, training reward, 500-game histogram, seeds, policy map (non-standard)
